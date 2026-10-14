@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pueblo Guaraní en Bolivia: Historia, Autonomía y Territorio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            600: '#16a34a',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        terracotta: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                        },
+                        earth: {
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-btn.active {
+            border-bottom: 3px solid #c2410c;
+            color: #c2410c;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 flex flex-col min-h-screen">
+
+    <!-- Header / Navigation -->
+    <header class="bg-forest-900 text-stone-100 shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <span class="text-3xl text-terracotta-500"><i class="fa-solid font-bold fa-feather-pointed"></i></span>
+                    <div>
+                        <h1 class="text-xl font-bold tracking-wide uppercase text-amber-100">Nación Guaraní</h1>
+                        <p class="text-xs text-forest-100 opacity-90">Gran Chaco Boliviano</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                    <button onclick="switchTab('identidad')" id="tab-btn-identidad" class="tab-btn active py-2 transition-colors duration-200">Identidad y Cultura</button>
+                    <button onclick="switchTab('historia')" id="tab-btn-historia" class="tab-btn py-2 transition-colors duration-200">Historia y Autonomía</button>
+                    <button onclick="switchTab('desafios')" id="tab-btn-desafios" class="tab-btn py-2 transition-colors duration-200">Desafíos y Soluciones</button>
+                    <button onclick="switchTab('fuentes')" id="tab-btn-fuentes" class="tab-btn py-2 transition-colors duration-200">Fuentes y Documentos</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-stone-200 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-forest-800 border-t border-forest-700 px-4 pt-2 pb-4 space-y-2">
+            <button onclick="switchTab('identidad')" class="block w-full text-left py-2 px-3 rounded text-stone-100 hover:bg-forest-700">Identidad y Cultura</button>
+            <button onclick="switchTab('historia')" class="block w-full text-left py-2 px-3 rounded text-stone-100 hover:bg-forest-700">Historia y Autonomía</button>
+            <button onclick="switchTab('desafios')" class="block w-full text-left py-2 px-3 rounded text-stone-100 hover:bg-forest-700">Desafíos y Soluciones</button>
+            <button onclick="switchTab('fuentes')" class="block w-full text-left py-2 px-3 rounded text-stone-100 hover:bg-forest-700">Fuentes y Documentos</button>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="bg-gradient-to-r from-forest-800 to-terracotta-800 text-white py-12 px-4 shadow-inner">
+        <div class="max-w-5xl mx-auto text-center space-y-4">
+            <span class="inline-block bg-terracotta-600/80 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Apuntes Escolares y Formación Ciudadana</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">El Pueblo Guaraní: Resistencia, Territorio y Autonomía</h2>
+            <p class="max-w-3xl mx-auto text-stone-200 text-base sm:text-lg font-light leading-relaxed">
+                Una mirada integral a la estructura política, historia de lucha, libre determinación y cosmovisión del pueblo Guaraní en el Chaco boliviano.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+
+        <!-- SECTION 1: IDENTIDAD Y CULTURA -->
+        <section id="section-identidad" class="space-y-8">
+            <div class="border-b border-stone-200 pb-4">
+                <h3 class="text-2xl font-bold text-forest-900 flex items-center gap-2">
+                    <i class="fa-solid fa-compass text-terracotta-600"></i> Identidad y Cultura
+                </h3>
+                <p class="text-stone-600 mt-1">Ubicación territorial, estructura organizativa y fundamentos filosóficos de la vida Guaraní.</p>
+            </div>
+
+            <!-- Grid 2 cols -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Card Ubicación -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 hover:shadow-md transition">
+                    <div class="flex items-center space-x-3 text-terracotta-700 mb-4">
+                        <i class="fa-solid fa-map-location-dot text-2xl"></i>
+                        <h4 class="text-xl font-semibold text-stone-800">Ubicación Geográfica: Gran Chaco</h4>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed">
+                        El pueblo Guaraní habita principalmente la ecorregión del **Gran Chaco Boliviano**, distribuido estratégicamente a lo largo de tres departamentos del sur y este de Bolivia:
+                    </p>
+                    <ul class="mt-4 space-y-2 text-stone-700">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-forest-600 text-sm"></i> <strong>Santa Cruz:</strong> Provincia Cordillera.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-forest-600 text-sm"></i> <strong>Chuquisaca:</strong> Provincias Luis Calvo y Hernando Siles.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-forest-600 text-sm"></i> <strong>Tarija:</strong> Provincias Gran Chaco y O'Connor.</li>
+                    </ul>
+                </div>
+
+                <!-- Card Organización Política -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 hover:shadow-md transition">
+                    <div class="flex items-center space-x-3 text-terracotta-700 mb-4">
+                        <i class="fa-solid fa-sitemap text-2xl"></i>
+                        <h4 class="text-xl font-semibold text-stone-800">Organización Política Tradicional</h4>
+                    </div>
+                    <p class="text-stone-600 leading-relaxed mb-3">
+                        Su estructura organizativa es descentralizada, basada en asambleas comunitarias y capitanías:
+                    </p>
+                    <div class="space-y-3">
+                        <div class="bg-forest-50 p-3 rounded-lg border-l-4 border-forest-600">
+                            <span class="font-bold text-forest-900">Capitanías (Tentami):</span> Agrupaciones regionales de comunidades que coordinan proyectos sociales, territoriales y políticos.
+                        </div>
+                        <div class="bg-terracotta-50 p-3 rounded-lg border-l-4 border-terracotta-600">
+                            <span class="font-bold text-terracotta-900">Mburuvicha Guasu:</span> Gran Capitán electo por consenso comunitarios para guiar e interpretar el mandato de las asambleas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Filosofía Teko & Tekoha -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 space-y-4">
+                <h4 class="text-xl font-semibold text-forest-900 flex items-center gap-2">
+                    <i class="fa-solid fa-tree text-forest-600"></i> La Filosofía del Teko y Tekoha
+                </h4>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
+                        <h5 class="font-bold text-terracotta-700 mb-1 text-lg">Teko (Modo de Ser)</h5>
+                        <p class="text-sm text-stone-600">Principios éticos, normas de convivencia, reciprocidad (yoparareko) y armonía entre la comunidad y los espíritus protectores de la naturaleza.</p>
+                    </div>
+                    <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
+                        <h5 class="font-bold text-forest-700 mb-1 text-lg">Tekoha (Espacio de Vida)</h5>
+                        <p class="text-sm text-stone-600">El espacio físico, social y ecológico indispensable para que el <em>Teko</em> pueda realizarse. Sin territorio sano no existe la identidad ni la cultura Guaraní.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Idioma & Rito -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-forest-900 text-stone-100 p-6 rounded-xl shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-terracotta-500 text-2xl mb-2"><i class="fa-solid fa-language"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Idioma Tupi-Guaraní</h4>
+                        <p class="text-stone-300 text-sm leading-relaxed">
+                            El idioma Guaraní es una de las lenguas oficiales del Estado Plurinacional de Bolivia. Mantiene viva la transmisión oral de mitos, saberes de medicina tradicional y normas consuetudinarias de generación en generación.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-terracotta-800 text-stone-100 p-6 rounded-xl shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-400 text-2xl mb-2"><i class="fa-solid fa-masks-theater"></i></div>
+                        <h4 class="text-xl font-bold mb-2">Arete Guasu (La Gran Fiesta)</h4>
+                        <p class="text-stone-200 text-sm leading-relaxed">
+                            Celebración ritual anual vinculada al ciclo agrícola del maíz y al reencuentro con los ancestros (Añaretãgua). Se emplean máscaras rituales de madera de kakarandá y danzas colectivas que afirman la vida y la memoria histórica.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: HISTORIA Y AUTONOMÍA -->
+        <section id="section-historia" class="hidden space-y-8">
+            <div class="border-b border-stone-200 pb-4">
+                <h3 class="text-2xl font-bold text-forest-900 flex items-center gap-2">
+                    <i class="fa-solid fa-landmark-flag text-terracotta-600"></i> Historia y Autonomía Indígena
+                </h3>
+                <p class="text-stone-600 mt-1">Línea de tiempo del proceso de reconstrucción territorial y el logro histórico del autogobierno.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative border-l-4 border-terracotta-600 ml-4 sm:ml-6 space-y-8 py-2">
+
+                <!-- Timeline Item 1 -->
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-terracotta-600 border-4 border-white"></div>
+                    <div class="bg-white p-5 rounded-lg border border-stone-200 shadow-sm">
+                        <span class="inline-block bg-terracotta-100 text-terracotta-800 font-bold px-2.5 py-0.5 rounded text-xs mb-2">28 de Enero, 1892</span>
+                        <h4 class="text-lg font-bold text-stone-900">La Batalla de Kuruyuki</h4>
+                        <p class="text-stone-600 text-sm mt-1">
+                            Liderada por el líder mesiánico **Apiaguaiki Tumpa**. Masacre histórica por parte de las fuerzas militares estatales y hacendados. Marcó el inicio de un hito trágico de despojo territorial, dispersión y servidumbre en las haciendas patronales (empatronamiento).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-forest-600 border-4 border-white"></div>
+                    <div class="bg-white p-5 rounded-lg border border-stone-200 shadow-sm">
+                        <span class="inline-block bg-forest-100 text-forest-800 font-bold px-2.5 py-0.5 rounded text-xs mb-2">1987</span>
+                        <h4 class="text-lg font-bold text-stone-900">Nacimiento de la APG</h4>
+                        <p class="text-stone-600 text-sm mt-1">
+                            Fundación de la **Asamblea del Pueblo Guaraní (APG)**. Reorganización política del pueblo guaraní para exigir el reconocimiento de sus tierras comunitarias de origen (TCO), salud, educación bilingüe e independencia organizativa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-forest-600 border-4 border-white"></div>
+                    <div class="bg-white p-5 rounded-lg border border-stone-200 shadow-sm">
+                        <span class="inline-block bg-forest-100 text-forest-800 font-bold px-2.5 py-0.5 rounded text-xs mb-2">2009</span>
+                        <h4 class="text-lg font-bold text-stone-900">Nueva Constitución Plurinacional</h4>
+                        <p class="text-stone-600 text-sm mt-1">
+                            La nueva Constitución Política del Estado (CPE) reconoce el carácter Plurinacional de Bolivia y consagra el derecho fundamental a la **Autonomía Indígena Originaria Campesina (AIOC)** y la libre determinación.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="relative pl-6 sm:pl-8 group">
+                    <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-terracotta-600 border-4 border-white"></div>
+                    <div class="bg-white p-5 rounded-lg border border-stone-200 shadow-sm">
+                        <span class="inline-block bg-terracotta-100 text-terracotta-800 font-bold px-2.5 py-0.5 rounded text-xs mb-2">8 de Enero, 2017</span>
+                        <h4 class="text-lg font-bold text-stone-900">Consolidación de Charagua Iyambae</h4>
+                        <p class="text-stone-600 text-sm mt-1">
+                            **Charagua Iyambae** (Santa Cruz) promulga su estatuto y se consolida formalmente como la **primera Autonomía Indígena de Bolivia**, sustituyendo la antigua estructura municipal por un modelo propio de autogobierno.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Órganos de Autogobierno -->
+            <div class="bg-stone-100 p-6 rounded-xl border border-stone-300">
+                <h4 class="text-xl font-bold text-forest-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-users-gear text-terracotta-600"></i> Órganos de Autogobierno (Ejemplo: Charagua Iyambae)
+                </h4>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+                        <h5 class="font-bold text-forest-800 text-base border-b border-stone-200 pb-2 mb-2">1. Ñemboati Reta</h5>
+                        <p class="text-xs text-stone-500 uppercase font-semibold mb-1">Órgano Decisionario / Asambleario</p>
+                        <p class="text-sm text-stone-600">Máxima instancia deliberativa y colectiva donde participan los delegados de las zonas organizadas. Dicta mandatos comunitarios.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+                        <h5 class="font-bold text-forest-800 text-base border-b border-stone-200 pb-2 mb-2">2. Mburu Kuai</h5>
+                        <p class="text-xs text-stone-500 uppercase font-semibold mb-1">Órgano Legislativo</p>
+                        <p class="text-sm text-stone-600">Encargado de formular reglamentos, leyes autónomas y fiscalizar la ejecución de los planes de gestión pública comunitaria.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+                        <h5 class="font-bold text-forest-800 text-base border-b border-stone-200 pb-2 mb-2">3. Tëta Tarembi Kuai</h5>
+                        <p class="text-xs text-stone-500 uppercase font-semibold mb-1">Órgano Ejecutivo</p>
+                        <p class="text-sm text-stone-600">Encabezado por el <em>TRI</em> (Tëtara Moaïya / Responsable de Administración) para administrar recursos y coordinar obras.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logros y Límites -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-forest-50 border border-forest-200 p-5 rounded-xl">
+                    <h5 class="text-lg font-bold text-forest-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-forest-600"></i> Hitos y Logros de Autonomía
+                    </h5>
+                    <ul class="space-y-2 text-sm text-forest-900">
+                        <li>• Creación del Área de Conservación e Importancia Ecológica **Ñembi Guasu**.</li>
+                        <li>• Gestión territorial bajo visión cultural y de respeto a la biodiversidad del Chaco.</li>
+                        <li>• Educación intracultural e intercultural bilingüe articulada a la APG.</li>
+                    </ul>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 p-5 rounded-xl">
+                    <h5 class="text-lg font-bold text-amber-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Límites Estructurales
+                    </h5>
+                    <ul class="space-y-2 text-sm text-amber-900">
+                        <li>• Burocracia burocrática estatal para transferencias presupuestarias directas.</li>
+                        <li>• Presiones por concesiones hidrocarburíferas dentro de territorios titulados.</li>
+                        <li>• Fragmentación político-administrativa regional.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: DESAFÍOS Y SOLUCIONES -->
+        <section id="section-desafios" class="hidden space-y-8">
+            <div class="border-b border-stone-200 pb-4">
+                <h3 class="text-2xl font-bold text-forest-900 flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-terracotta-600"></i> Desafíos Territoriales y Soluciones
+                </h3>
+                <p class="text-stone-600 mt-1">Problemáticas socioambientales actuales e instrumentos de respuesta institucional e indígena.</p>
+            </div>
+
+            <!-- Grid Problemas vs Soluciones -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                
+                <!-- Columna Problemas -->
+                <div class="space-y-6">
+                    <h4 class="text-xl font-bold text-terracotta-800 border-b border-terracotta-200 pb-2">
+                        <i class="fa-solid fa-circle-xmark"></i> Conflictos y Amenazas
+                    </h4>
+
+                    <!-- Card 1 -->
+                    <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm">
+                        <h5 class="font-bold text-stone-800 text-lg mb-2">Avance del Agronegocio y Ganadería</h5>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Deforestación severa en el Chaco boliviano para monocultivos (soya, maíz transgénico) y ganadería extensiva. Provoca sequías prolongadas, fragmentación de ecosistemas y pérdida del bosque nativo.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm">
+                        <h5 class="font-bold text-stone-800 text-lg mb-2">Falta de Titulación Definitiva</h5>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Procesos de saneamiento de tierras pendientes por parte del INRA en ciertas áreas, lo que genera superposición con terceros (hacendados y ganaderos) y constante vulnerabilidad jurídica.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm">
+                        <h5 class="font-bold text-stone-800 text-lg mb-2">Impacto Extractivo</h5>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Proyectos de exploración y explotación de gas y petróleo que afectan cuencas hídricas locales y disminuyen la disponibilidad de recursos naturales esenciales.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Columna Soluciones / Actores -->
+                <div class="space-y-6">
+                    <h4 class="text-xl font-bold text-forest-800 border-b border-forest-200 pb-2">
+                        <i class="fa-solid fa-circle-check"></i> Actores Estratégicos y Soluciones
+                    </h4>
+
+                    <!-- Card Solución 1 -->
+                    <div class="bg-forest-50 p-5 rounded-xl border border-forest-200 shadow-sm">
+                        <h5 class="font-bold text-forest-900 text-lg mb-1">Titulación Colectiva de las TCO / TIOC</h5>
+                        <p class="text-forest-800 text-sm leading-relaxed mb-3">
+                            Aceleración de saneamiento de tierras mediante la articulación entre el **INRA** y la **APG** para garantizar la seguridad jurídica del <em>Tekoha</em>.
+                        </p>
+                        <span class="text-xs bg-forest-200 text-forest-900 px-2 py-1 rounded font-medium">Actores: INRA + APG</span>
+                    </div>
+
+                    <!-- Card Solución 2 -->
+                    <div class="bg-forest-50 p-5 rounded-xl border border-forest-200 shadow-sm">
+                        <h5 class="font-bold text-forest-900 text-lg mb-1">Corredores Bioculturales de Conservación</h5>
+                        <p class="text-forest-800 text-sm leading-relaxed mb-3">
+                            Integración del Parque Nacional **Kaa-Iya del Gran Chaco** y el Área Autónoma **Ñembi Guasu**, protegiendo la biodiversidad y el territorio de grupos en aislamiento voluntario (Ayoreo).
+                        </p>
+                        <span class="text-xs bg-forest-200 text-forest-900 px-2 py-1 rounded font-medium">Protección Ecológica</span>
+                    </div>
+
+                    <!-- Card Solución 3 -->
+                    <div class="bg-forest-50 p-5 rounded-xl border border-forest-200 shadow-sm">
+                        <h5 class="font-bold text-forest-900 text-lg mb-1">Consulta Previa, Libre e Informada</h5>
+                        <p class="text-forest-800 text-sm leading-relaxed mb-3">
+                            Exigencia rigurosa de cumplimiento del **Convenio 169 de la OIT** antes de cualquier megaproyecto extractivo dentro de territorio guaraní.
+                        </p>
+                        <span class="text-xs bg-forest-200 text-forest-900 px-2 py-1 rounded font-medium">Derecho Internacional</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: FUENTES -->
+        <section id="section-fuentes" class="hidden space-y-8">
+            <div class="border-b border-stone-200 pb-4">
+                <h3 class="text-2xl font-bold text-forest-900 flex items-center gap-2">
+                    <i class="fa-solid fa-book-bookmark text-terracotta-600"></i> Fuentes y Referencias Académicas
+                </h3>
+                <p class="text-stone-600 mt-1">Marco normativo, informes institucionales y fuentes consultadas para la elaboración de este contenido.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                
+                <div class="bg-white p-5 rounded-lg border border-stone-200 flex gap-4 items-start shadow-sm hover:border-terracotta-500 transition">
+                    <div class="text-terracotta-600 text-2xl mt-1"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <div>
+                        <h5 class="font-bold text-stone-900">Constitución Política del Estado (CPE Bolivia - 2009)</h5>
+                        <p class="text-xs text-stone-500 mt-1">Artículos referentes a Autonomías Indígena Originaria Campesinas y derechos de los pueblos indígenas.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border border-stone-200 flex gap-4 items-start shadow-sm hover:border-terracotta-500 transition">
+                    <div class="text-terracotta-600 text-2xl mt-1"><i class="fa-solid fa-globe"></i></div>
+                    <div>
+                        <h5 class="font-bold text-stone-900">Convenio 169 de la OIT</h5>
+                        <p class="text-xs text-stone-500 mt-1">Convenio sobre Pueblos Indígenas y Tribales. Garantía de Consulta Previa y Territorio.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border border-stone-200 flex gap-4 items-start shadow-sm hover:border-terracotta-500 transition">
+                    <div class="text-terracotta-600 text-2xl mt-1"><i class="fa-solid fa-building-columns"></i></div>
+                    <div>
+                        <h5 class="font-bold text-stone-900">CIDH (Comisión Interamericana de Derechos Humanos)</h5>
+                        <p class="text-xs text-stone-500 mt-1">Informes sobre las comunidades guaraníes y cautivas en el Chaco boliviano.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border border-stone-200 flex gap-4 items-start shadow-sm hover:border-terracotta-500 transition">
+                    <div class="text-terracotta-600 text-2xl mt-1"><i class="fa-solid fa-file-contract"></i></div>
+                    <div>
+                        <h5 class="font-bold text-stone-900">Estatuto de la Autonomía Charagua Iyambae</h5>
+                        <p class="text-xs text-stone-500 mt-1">Documento normativo de autogobierno, estructura orgánica y delimitación territorial.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border border-stone-200 flex gap-4 items-start shadow-sm hover:border-terracotta-500 transition">
+                    <div class="text-terracotta-600 text-2xl mt-1"><i class="fa-solid fa-map"></i></div>
+                    <div>
+                        <h5 class="font-bold text-stone-900">INRA (Instituto Nacional de Reforma Agraria)</h5>
+                        <p class="text-xs text-stone-500 mt-1">Datos y boletines sobre el saneamiento y titulación colectiva de tierras comunitarias (TCO/TIOC).</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-lg border border-stone-200 flex gap-4 items-start shadow-sm hover:border-terracotta-500 transition">
+                    <div class="text-terracotta-600 text-2xl mt-1"><i class="fa-solid fa-users"></i></div>
+                    <div>
+                        <h5 class="font-bold text-stone-900">APG (Asamblea del Pueblo Guaraní)</h5>
+                        <p class="text-xs text-stone-500 mt-1">Documentos de memoria histórica, resoluciones de mandatos y publicaciones sobre el Teko Guaraní.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-forest-900 text-stone-300 py-8 border-t border-forest-800">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm space-y-2">
+            <p class="font-medium text-stone-200">Pueblo Guaraní en Bolivia: Apuntes y Síntesis Educativa</p>
+            <p class="text-xs text-forest-200">Elaborado con base en documentación legal, histórica y socioambiental sobre el Gran Chaco.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all sections
+            document.getElementById('section-identidad').classList.add('hidden');
+            document.getElementById('section-historia').classList.add('hidden');
+            document.getElementById('section-desafios').classList.add('hidden');
+            document.getElementById('section-fuentes').classList.add('hidden');
+
+            // Show current section
+            document.getElementById('section-' + tabId).classList.remove('hidden');
+
+            // Reset desktop tab button styling
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Set active class on target button
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            if(activeBtn) {
+                activeBtn.classList.add('active');
+            }
+
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // Mobile menu toggle logic
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
